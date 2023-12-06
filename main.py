@@ -40,17 +40,25 @@ def display(GAMEBOARDSIZE, GameBoard):
 # Player: Is it X (1) or O (2)  
 # GameBoard: The GameBoard the Game is being played on 
 def placeLetter(Player, GameBoard):
-     if (Player == 1):
+     inputNeeded = True
+     while inputNeeded:
+      if (Player == 1):
          row = input("Where would you like place your X? Input the row (1, 2, or 3) first:\n")
-     else:
+      else:
          row = input("Where would you like place your O? Input the row (1, 2, or 3) first:\n")
           
-     col = input("Now input the column (1, 2, or 3):\n")
+      col = input("Now input the column (1, 2, or 3):\n")
 
-     if (Player == 1):
+      if (GameBoard[int(row)-1][int(col)-1] == 0):
+       if (Player == 1):
         GameBoard[int(row)-1][int(col)-1] = 1
-     else: 
+        inputNeeded = False
+       else: 
         GameBoard[int(row)-1][int(col)-1] = 2
+        inputNeeded = False
+      else:
+          print("This position already has a letter in it, please choose another position.")
+          
 
 # Size of the board
 GAMEBOARDSIZE = 3
