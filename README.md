@@ -15,4 +15,5 @@ Traceback (most recent call last):
                           ^^^^^^^^
 ValueError: invalid literal for int() with base 10: '& C:/Users/thein/AppData/Local/Programs/Python/Python311/python.exe c:/Users/thein/Documents/GitHub/EVILtictactoe/main.py'
 
+Added functionality to make sure players cannot overwrite other players letters in the gameboard
 
