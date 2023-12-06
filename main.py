@@ -11,13 +11,17 @@ def checkWin():
       # First lets check horizontal wins
       for x in range(GAMEBOARDSIZE):
             if (GameBoard[0][x] == GameBoard[1][x] == GameBoard[2][x] == 1 or GameBoard[0][x] == GameBoard[1][x] == GameBoard[2][x] == 2):
-                  return True
-            
+                  return True     
       # Second check vertical wins
       for x in range(GAMEBOARDSIZE):
             if (GameBoard[x][0] == GameBoard[x][1] == GameBoard[x][2] == 1 or GameBoard[x][0] == GameBoard[x][1] == GameBoard[x][2] == 2):
-                  return True
-            
+                  return True    
+      # Lastly, Check for diagonal wins
+      if (GameBoard[0][2] == GameBoard[1][1] == GameBoard[2][0] == 1 or GameBoard[0][2] == GameBoard[1][1] == GameBoard[2][0] == 2):
+           return True
+      if (GameBoard[0][0] == GameBoard[1][1] == GameBoard[2][2] == 1 or GameBoard[0][0] == GameBoard[1][1] == GameBoard[2][2] == 2):
+           return True
+      # All wins were checked for, no one won yet
       return False
 
 
@@ -44,8 +48,8 @@ XWin = False
 
 while True:
         #X's turn
-      col = input("Where would you like place your X? Input the column (1, 2, or 3) first:\n")
-      row = input("Now input the row (1, 2, or 3):\n")
+      row = input("Where would you like place your X? Input the row (1, 2, or 3) first:\n")
+      col = input("Now input the column (1, 2, or 3):\n")
       GameBoard[int(row)-1][int(col)-1] = 1
         # Checking if X Won
       if checkWin():
@@ -53,8 +57,8 @@ while True:
             break
       display()
         # O's turn
-      col = input("Where would you like place your O? Input the column (1, 2, or 3) first:\n")
-      row = input("Now input the row (1, 2, or 3):\n")
+      row = input("Where would you like place your O? Input the row (1, 2, or 3) first:\n")
+      col = input("Now input the column (1, 2, or 3):\n")
       GameBoard[int(row)-1][int(col)-1] = 2
         # Checking if O Won
       if checkWin():
