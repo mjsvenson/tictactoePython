@@ -41,15 +41,14 @@ def display(GAMEBOARDSIZE, GameBoard):
 # Player: Is it X (1) or O (2)  
 # GameBoard: The GameBoard the Game is being played on 
 def placeLetter(Player, GameBoard):
+     # This bool checks for if the player inputted a valid position
      inputNeeded = True
      while inputNeeded:
       if (Player == 1):
          row = input("Where would you like place your X? Input the row (1, 2, or 3) first:\n")
       else:
          row = input("Where would you like place your O? Input the row (1, 2, or 3) first:\n")
-          
       col = input("Now input the column (1, 2, or 3):\n")
-
       if (GameBoard[int(row)-1][int(col)-1] == 0):
        if (Player == 1):
         GameBoard[int(row)-1][int(col)-1] = 1
