@@ -1,3 +1,4 @@
+# Copyright: Matthew Svenson 2023
 # 1 = X
 # 2 = O
 
