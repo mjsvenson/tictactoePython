@@ -1,13 +1,9 @@
-#First lets make a game of tictactoe
-
-GAMEBOARDSIZE = 3
-
-GameBoard = [[0 for i in range(GAMEBOARDSIZE)] for j in range(GAMEBOARDSIZE)]
-
 # 1 = X
 # 2 = O
 
-def checkWin():
+# Function to check if there is a winner
+# GameBoard: The GameBoard the game is being played on
+def checkWin(GameBoard):
       # First lets check horizontal wins
       for x in range(GAMEBOARDSIZE):
             if (GameBoard[0][x] == GameBoard[1][x] == GameBoard[2][x] == 1 or GameBoard[0][x] == GameBoard[1][x] == GameBoard[2][x] == 2):
@@ -24,50 +20,62 @@ def checkWin():
       # All wins were checked for, no one won yet
       return False
 
-
-def display():
+# Displays the current board to the console
+# GAMEBOARDSIZE: The size of the gameboard (2x2? 3x3?)
+# GameBoard: The GameBoard the Game is being played on
+def display(GAMEBOARDSIZE, GameBoard):
       for x in range(GAMEBOARDSIZE):
        print("-------------------------\n")
        print("|", end="")
        for i in range(GAMEBOARDSIZE):
           if GameBoard[x][i] == 2:
             print("  O   |", end=" ")
-          
           if GameBoard[x][i] == 1:
             print("  X   |", end=" ")
-          
           if GameBoard[x][i] == 0:
             print("      |", end=" ")
-
        print("\n")
      
-      
+# Places an X or O on the Gameboard 
+# Player: Is it X (1) or O (2)  
+# GameBoard: The GameBoard the Game is being played on 
+def placeLetter(Player, GameBoard):
+     if (Player == 1):
+         row = input("Where would you like place your X? Input the row (1, 2, or 3) first:\n")
+     else:
+         row = input("Where would you like place your O? Input the row (1, 2, or 3) first:\n")
+          
+     col = input("Now input the column (1, 2, or 3):\n")
 
+     if (Player == 1):
+        GameBoard[int(row)-1][int(col)-1] = 1
+     else: 
+        GameBoard[int(row)-1][int(col)-1] = 2
+
+# Size of the board
+GAMEBOARDSIZE = 3
+# Making the board
+GameBoard = [[0 for i in range(GAMEBOARDSIZE)] for j in range(GAMEBOARDSIZE)]
+          
 print("Welcome to my game of TicTacToe!")
 XWin = False
 
 while True:
         #X's turn
-      row = input("Where would you like place your X? Input the row (1, 2, or 3) first:\n")
-      col = input("Now input the column (1, 2, or 3):\n")
-      GameBoard[int(row)-1][int(col)-1] = 1
+      placeLetter(1, GameBoard)
         # Checking if X Won
-      if checkWin():
+      if checkWin(GameBoard):
             XWin = True
             break
-      display()
+      display(GAMEBOARDSIZE, GameBoard)
         # O's turn
-      row = input("Where would you like place your O? Input the row (1, 2, or 3) first:\n")
-      col = input("Now input the column (1, 2, or 3):\n")
-      GameBoard[int(row)-1][int(col)-1] = 2
+      placeLetter(2, GameBoard)
         # Checking if O Won
-      if checkWin():
+      if checkWin(GameBoard):
             break
-      display()
-
-
+      display(GAMEBOARDSIZE, GameBoard)
 
 print("Victory!")
-display()
+display(GAMEBOARDSIZE, GameBoard)
 
 
