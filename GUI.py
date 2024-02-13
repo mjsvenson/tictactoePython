@@ -1,12 +1,6 @@
 # Example file showing a basic pygame "game loop"
 import pygame
 
-
-#def drawTurn(xStart, yStart, xEnd, yEnd, turn):
-#    if turn == "X":
-#        pygame.draw.line(screen, (0,0,0), (xStart, yStart), (xEnd, yEnd))
-#        pygame.draw.line(screen, (0,0,0), (xEnd, yStart), (xStart, yEnd))
-
 boxs = [0,0,0,0,0,0,0,0,0]
 turn = 'X'
 
@@ -49,27 +43,115 @@ while running:
                     else:
                         if turn == "O":
                             turn = "X"
+            if boxs[1] == 0:
+                if 263 <= mouse[0] <= 458 and 85 <= mouse[1] <= 277: 
+                    if boxs[1] == 0:
+                        if turn == "X":
+                            boxs[1] = 1
+                        if turn == "O":
+                            boxs[1] = 2
 
-            if 263 <= mouse[0] <= 458 and 85 <= mouse[1] <= 277: 
-                pygame.quit();
-            if 463 <= mouse[0] <= 658 and 85 <= mouse[1] <= 277: 
-                pygame.quit();
+                    if turn == "X":
+                        turn = "O"
+                    else:
+                        if turn == "O":
+                            turn = "X"
+            if boxs[2] == 0:
+                if 463 <= mouse[0] <= 658 and 85 <= mouse[1] <= 277: 
+                    if boxs[2] == 0:
+                        if turn == "X":
+                            boxs[2] = 1
+                        if turn == "O":
+                            boxs[2] = 2
+
+                    if turn == "X":
+                        turn = "O"
+                    else:
+                        if turn == "O":
+                            turn = "X"
 
             # Row 2 functionality
-            if 63 <= mouse[0] <= 258 and 285 <= mouse[1] <= 477: 
-                pygame.quit();
-            if 263 <= mouse[0] <= 458 and 285 <= mouse[1] <= 477: 
-                pygame.quit();
+            if boxs[3] == 0:
+                if 63 <= mouse[0] <= 258 and 285 <= mouse[1] <= 477: 
+                    if boxs[3] == 0:
+                        if turn == "X":
+                            boxs[3] = 1
+                        if turn == "O":
+                            boxs[3] = 2
+
+                    if turn == "X":
+                        turn = "O"
+                    else:
+                        if turn == "O":
+                            turn = "X"
+            if boxs[4] == 0:
+                if 263 <= mouse[0] <= 458 and 285 <= mouse[1] <= 477: 
+                    if boxs[4] == 0:
+                        if turn == "X":
+                            boxs[4] = 1
+                        if turn == "O":
+                            boxs[4] = 2
+
+                    if turn == "X":
+                        turn = "O"
+                    else:
+                        if turn == "O":
+                            turn = "X"
+                
             if 463 <= mouse[0] <= 658 and 285 <= mouse[1] <= 477: 
-                pygame.quit();
+                if boxs[5] == 0:
+                        if turn == "X":
+                            boxs[5] = 1
+                        if turn == "O":
+                            boxs[5] = 2
+
+                        if turn == "X":
+                            turn = "O"
+                        else:
+                            if turn == "O":
+                                turn = "X"
             
             # Row 3 functionality
-            if 63 <= mouse[0] <= 258 and 485 <= mouse[1] <= 677: 
-                pygame.quit();
-            if 263 <= mouse[0] <= 458 and 485 <= mouse[1] <= 677: 
-                pygame.quit();
-            if 463 <= mouse[0] <= 658 and 485 <= mouse[1] <= 677: 
-                pygame.quit();
+            if boxs[6] == 0:
+                if 63 <= mouse[0] <= 258 and 485 <= mouse[1] <= 677: 
+                    if boxs[6] == 0:
+                        if turn == "X":
+                            boxs[6] = 1
+                        if turn == "O":
+                            boxs[6] = 2
+
+                    if turn == "X":
+                        turn = "O"
+                    else:
+                        if turn == "O":
+                            turn = "X"
+            if boxs[7] == 0:
+                if 263 <= mouse[0] <= 458 and 485 <= mouse[1] <= 677: 
+                    if boxs[7] == 0:
+                        if turn == "X":
+                            boxs[7] = 1
+                        if turn == "O":
+                            boxs[7] = 2
+
+                    if turn == "X":
+                        turn = "O"
+                    else:
+                        if turn == "O":
+                            turn = "X"
+            if boxs[8] == 0:
+                if 463 <= mouse[0] <= 658 and 485 <= mouse[1] <= 677: 
+                    if boxs[8] == 0:
+                        if turn == "X":
+                            boxs[8] = 1
+                        if turn == "O":
+                            boxs[8] = 2
+
+                    if turn == "X":
+                        turn = "O"
+                    else:
+                        if turn == "O":
+                            turn = "X"
+
 
     # RENDER YOUR GAME HERE
     pygame.display.set_caption("EVIL Tic-Tac-Toe")
@@ -94,10 +176,60 @@ while running:
 
     print(turn)
 
-    # Draws current status of board
+    # Draws current status of board 
     if boxs[0] == 1:
          pygame.draw.line(screen, (0,0,0), (63, 85), (255, 277))
          pygame.draw.line(screen, (0,0,0), (255, 85), (63, 277))
+    if boxs[0] == 2:
+        pygame.draw.circle(screen, (0,0,0), (160, 180), 100, 1)
+
+    if boxs[1] == 1:
+         pygame.draw.line(screen, (0,0,0), (263, 85), (458, 277))
+         pygame.draw.line(screen, (0,0,0), (458, 85), (263, 277))
+    if boxs[1] == 2:
+         pygame.draw.circle(screen, (0,0,0), (360, 180), 100, 1)
+
+    if boxs[2] == 1:
+         pygame.draw.line(screen, (0,0,0), (463, 85), (658, 277))
+         pygame.draw.line(screen, (0,0,0), (658, 85), (463, 277))
+    if boxs[2] == 2:
+         pygame.draw.circle(screen, (0,0,0), (560, 180), 100, 1)
+
+    if boxs[3] == 1:
+         pygame.draw.line(screen, (0,0,0), (63, 285), (255, 477))
+         pygame.draw.line(screen, (0,0,0), (255, 285), (63, 477))
+    if boxs[3] == 2:
+         pygame.draw.circle(screen, (0,0,0), (160, 380), 100, 1)
+
+    if boxs[4] == 1:
+         pygame.draw.line(screen, (0,0,0), (263, 285), (455, 477))
+         pygame.draw.line(screen, (0,0,0), (455, 285), (263, 477))
+    if boxs[4] == 2:
+         pygame.draw.circle(screen, (0,0,0), (360, 380), 100, 1)
+    
+    if boxs[5] == 1:
+         pygame.draw.line(screen, (0,0,0), (463, 285), (655, 477))
+         pygame.draw.line(screen, (0,0,0), (655, 285), (463, 477))
+    if boxs[5] == 2:
+         pygame.draw.circle(screen, (0,0,0), (560, 380), 100, 1)
+
+    if boxs[6] == 1:
+         pygame.draw.line(screen, (0,0,0), (63, 485), (255, 677))
+         pygame.draw.line(screen, (0,0,0), (255, 485), (63, 677))
+    if boxs[6] == 2:
+         pygame.draw.circle(screen, (0,0,0), (160, 580), 100, 1)
+        
+    if boxs[7] == 1:
+         pygame.draw.line(screen, (0,0,0), (263, 485), (455, 677))
+         pygame.draw.line(screen, (0,0,0), (455, 485), (263, 677))
+    if boxs[7] == 2:
+         pygame.draw.circle(screen, (0,0,0), (360, 580), 100, 1)
+
+    if boxs[8] == 1:
+         pygame.draw.line(screen, (0,0,0), (463, 485), (655, 677))
+         pygame.draw.line(screen, (0,0,0), (655, 485), (463, 677))
+    if boxs[8] == 2:
+         pygame.draw.circle(screen, (0,0,0), (560, 580), 100, 1)
 
     pygame.display.flip()
 
