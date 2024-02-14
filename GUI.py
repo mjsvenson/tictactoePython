@@ -1,16 +1,17 @@
 # Example file showing a basic pygame "game loop"
+# Copyright: Matthew Svenson 2024
+
 import pygame
 
 boxs = [0,0,0,0,0,0,0,0,0]
 turn = 'X'
-
+win = 0
 
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((720, 720))
 clock = pygame.time.Clock()
-running = True
-
+running = True    
 
 while running:
     # poll for events
@@ -19,9 +20,6 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("white")
     
-   
-    
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -230,8 +228,64 @@ while running:
          pygame.draw.line(screen, (0,0,0), (655, 485), (463, 677))
     if boxs[8] == 2:
          pygame.draw.circle(screen, (0,0,0), (560, 580), 100, 1)
+   
+    # Horizontal wins X or O
+    if (boxs[0] == boxs[1] == boxs[2] == 1):
+        win = 1
+    if (boxs[3] == boxs[4] == boxs[5] == 1):
+        win = 1
+    if (boxs[6] == boxs[7] == boxs[8] == 1):
+        win = 1
+    if (boxs[0] == boxs[1] == boxs[2] == 2):
+        win = 2
+    if (boxs[3] == boxs[4] == boxs[5] == 2):
+        win = 2
+    if (boxs[6] == boxs[7] == boxs[8] == 2):
+        win = 2
+
+    # Vertical wins X or O
+    if (boxs[0] == boxs[3] == boxs[6] == 1):
+        win = 1
+    if (boxs[1] == boxs[4] == boxs[7] == 1):
+        win = 1
+    if (boxs[2] == boxs[5] == boxs[8] == 1):
+        win = 1
+    if (boxs[0] == boxs[3] == boxs[6] == 2):
+        win = 2
+    if (boxs[1] == boxs[4] == boxs[7] == 2):
+        win = 2
+    if (boxs[2] == boxs[5] == boxs[8] == 2):
+        win = 2
+
+    # Diagonal wins X or O
+    if (boxs[0] == boxs[4] == boxs[8] == 1):
+        win = 1
+    if (boxs[2] == boxs[4] == boxs[6] == 1):
+        win = 1
+    if (boxs[0] == boxs[4] == boxs[8] == 2):
+        win = 2
+    if (boxs[2] == boxs[4] == boxs[6] == 2):
+        win = 2
+
+
+    if (win == 1):
+        font = pygame.font.Font('freesansbold.ttf', 112)
+        text = font.render('X wins!', True, (0,0,0), (255,255,255))
+        textRect = text.get_rect()
+        textRect.center = (360, 360)
+        screen.blit(text, textRect)
+
+    if (win == 2):
+        font = pygame.font.Font('freesansbold.ttf', 112)
+        text = font.render('O wins!', True, (0,0,0), (255,255,255))
+        textRect = text.get_rect()
+        textRect.center = (360, 360)
+        screen.blit(text, textRect)
 
     pygame.display.flip()
+
+    
+
 
 
     clock.tick(60)  # limits FPS to 60
